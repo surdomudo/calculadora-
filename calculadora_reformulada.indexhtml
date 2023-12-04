@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            width: 300px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .resultado {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            text-align: right;
+            font-size: 24px;
+        }
+
+        .actions, .numbers {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+            border: 1px solid #8e8d8d;
+            border-radius: 3px;
+            background-color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .actions:hover, .numbers:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <div class="resultado" id="resultado"></div>
+    <div class="actions" id="soma" onclick="show('+')">+</div>
+    <div class="actions" id="divisao" onclick="show('/')">/</div>
+    <div class="actions" id="subtracao" onclick="show('-')">-</div>
+    <div class="actions" id="mutiplicacao" onclick="show('*')">*</div>
+    <div>
+        <div class="numbers" onclick="show('7')">7</div>
+        <div class="numbers" onclick="show('8')">8</div>
+        <div class="numbers" onclick="show('9')">9</div>
+    </div>
+    <div>
+        <div class="numbers" onclick="show('4')">4</div>
+        <div class="numbers" onclick="show('5')">5</div>
+        <div class="numbers" onclick="show('6')">6</div>
+    </div>
+    <div>
+        <div class="numbers" onclick="show('1')">1</div>
+        <div class="numbers" onclick="show('2')">2</div>
+        <div class="numbers" onclick="show('3')">3</div>
+    </div>
+    <div>
+        <div class="numbers" onclick="show('0')">0</div>
+        <div class="numbers" onclick="limpar()">AC</div>
+        <div class="numbers" onclick="resposta()">=</div>
+    </div>
+</div>
+
+   
+    <script>
+
+        function clicou() {
+            console.log("oie")
+        }
+
+        function resposta(){
+           const resultado = document.getElementById('resultado').innerHTML
+           
+           const valor = eval(resultado)
+           console.log("valor", valor)
+           limpar()
+           verificacao(valor, resultado)
+           show(valor)
+
+           console.log(valor)
+        }
+
+        function limpar() {
+            const resultado = document.getElementById('resultado')
+            resultado.innerHTML =  ""
+        }
+
+        function limpando() {
+            const resultado = document.getElementById('resultado');
+            let expressao = resultado.innerHTML;
+            expressao = expressao.slice(0, -1); // Remove o último caractere
+            resultado.innerHTML = expressao;
+}
+
+
+        function show(value){
+            const resultado = document.getElementById('resultado')
+      
+            resultado.innerHTML = resultado.innerHTML + value
+        }
+
+        function verificacao(n, y){
+            if(n == undefined){
+                y = 'error'
+            }
+        }
+        console.log(test, typeof test )
+    </script>
+</body>
+</html>
